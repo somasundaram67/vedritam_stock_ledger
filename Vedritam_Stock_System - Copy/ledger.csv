@@ -1,3 +1,0 @@
-id,school_id,class_id,bookName,subject,publication,vendor,category,invoiceRef,strength,purchased,distributed,returned,balance,booksRequired,remarks,created_by,created_time,modified_by,modified_time
-L_a720ad73,3,1,New Book,gdfgdh,df,ddfhgfg,gh,dfgh,4,0,0,0,0,4,reg,admin,2026-07-22 22:00:57,admin,2026-07-25 22:04:52
-L_2174bcbe,3,1,Nw Bookdghdh,dhdgt,hd,dgd,tdgt,hdgth,27,30,20,6,4,0,,admin,2026-07-20 23:22:25,admin,2026-07-22 22:00:35
