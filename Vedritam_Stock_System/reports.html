@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Vedritam Stock Ledger</title>
+    <script>(function(){try{var t=localStorage.getItem('v_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<link rel="stylesheet" href="style.css?v=4.13">
+    <link rel="stylesheet" href="theme.css?v=4.13">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .reports-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .stat-card { background: var(--card-bg, #fff); padding: 1.25rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .stat-card h4 { margin:0 0 .3rem; font-size:.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+        .stat-card .value { font-size: 2rem; font-weight: 600; color: var(--primary-color, #0f3a61); }
+        .chart-card { background:#fff; padding:1rem; border-radius:8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .chart-card h3 { margin:0 0 .75rem; font-size:1rem; }
+        .task-list { max-height: 320px; overflow-y: auto; }
+        .task-item { display:flex; justify-content:space-between; padding: .55rem .25rem; border-bottom: 1px solid #eee; font-size: .9rem; }
+        .badge-danger { background:#fee; color:#c00; padding:2px 8px; border-radius:12px; font-size:.75rem; font-weight:600; }
+        .badge-warn { background:#fff4e0; color:#a56200; padding:2px 8px; border-radius:12px; font-size:.75rem; font-weight:600; }
+        .badge-ok { background:#e6f7ea; color:#1a7a3a; padding:2px 8px; border-radius:12px; font-size:.75rem; font-weight:600; }
+    </style>
+</head>
+<body data-page="reports">
+<header class="app-header">
+    <div class="header-left">
+        <img src="logo.png" alt="Vedritam Logo" onerror="this.style.display='none'">
+        <div class="header-title">Vedritam School Stock Ledger</div>
+    </div>
+    <div class="header-right">
+        <a href="dashboard.html" class="btn btn-secondary" style="margin-right:10px;">← Dashboard</a>
+        <button class="logout-btn" onclick="vSignOut()">Logout</button>
+    </div>
+</header>
+
+<main class="main-content" style="max-width:1200px; margin:2rem auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="margin:0;">📊 Reports & Analytics</h2>
+        <button class="btn btn-secondary" onclick="loadReports()">↻ Refresh</button>
+    </div>
+    <p style="color:var(--text-muted); font-size:.9rem;">Consolidated data across all schools and classes.</p>
+
+    <div class="reports-grid">
+        <div class="stat-card"><h4>Total Schools</h4><div class="value" id="statSchools">–</div></div>
+        <div class="stat-card"><h4>Total Classes</h4><div class="value" id="statClasses">–</div></div>
+        <div class="stat-card"><h4>Book Records</h4><div class="value" id="statRecords">–</div></div>
+        <div class="stat-card"><h4>Books Purchased</h4><div class="value" id="statPurchased">–</div></div>
+        <div class="stat-card"><h4>Books Distributed</h4><div class="value" id="statDistributed">–</div></div>
+        <div class="stat-card"><h4>Books Balance</h4><div class="value" id="statBalance">–</div></div>
+    </div>
+
+    <div class="reports-grid" style="margin-top:1.5rem;">
+        <div class="chart-card"><h3>Purchased vs Distributed vs Balance</h3><canvas id="chartOverview"></canvas></div>
+        <div class="chart-card"><h3>Top Subjects (by Purchased)</h3><canvas id="chartSubjects"></canvas></div>
+        <div class="chart-card"><h3>Books per School</h3><canvas id="chartSchools"></canvas></div>
+        <div class="chart-card"><h3>Category Split</h3><canvas id="chartCategory"></canvas></div>
+    </div>
+
+    <div class="reports-grid" style="margin-top:1.5rem;">
+        <div class="chart-card">
+            <h3>⚠️ Task List — Attention Needed</h3>
+            <p style="font-size:.8rem; color:var(--text-muted); margin:0 0 .5rem;">Books where required &gt; 0 or balance is negative.</p>
+            <div class="task-list" id="taskList"></div>
+        </div>
+        <div class="chart-card">
+            <h3>📋 Recent Activity</h3>
+            <div class="task-list" id="activityList"></div>
+        </div>
+    </div>
+</main>
+
+<div id="toast-container"></div>
+<script>
+const token = localStorage.getItem('v_token') || localStorage.getItem('access_token') || localStorage.getItem('token') || '';
+if (!token) { window.location.href = 'index.html'; }
+function authHeaders() { return { 'Authorization': 'Bearer ' + token }; }
+const charts = {};
+
+async function apiGet(url) {
+    const r = await fetch(url, { headers: authHeaders() });
+    if (!r.ok) throw new Error(url + ' → ' + r.status);
+    return r.json();
+}
+
+async function loadReports() {
+    try {
+        const schools = await apiGet('/api/v1/schools');
+        let allRecords = [];
+        let allClasses = [];
+        for (const s of schools) {
+            const classes = await apiGet(`/api/v1/schools/${s.id}/classes`);
+            for (const c of classes) {
+                allClasses.push({ school: s.name, ...c });
+                const recs = await apiGet(`/api/v1/ledger/${s.id}/${c.id}`);
+                recs.forEach(r => allRecords.push({ ...r, _school: s.name, _class: c.name }));
+            }
+        }
+        render(schools, allClasses, allRecords);
+    } catch (e) {
+        if (String(e.message).includes('401')) {
+            localStorage.clear();
+            window.location.href = 'index.html';
+            return;
+        }
+        alert('Failed to load reports: ' + e.message);
+    }
+}
+
+function num(x) { return Number(x) || 0; }
+
+function render(schools, classes, records) {
+    const totPurchased = records.reduce((a,r) => a + num(r.purchased), 0);
+    const totDistributed = records.reduce((a,r) => a + num(r.distributed), 0);
+    const totBalance = records.reduce((a,r) => a + num(r.balance), 0);
+    const totReturned = records.reduce((a,r) => a + num(r.returned), 0);
+
+    document.getElementById('statSchools').textContent = schools.length;
+    document.getElementById('statClasses').textContent = classes.length;
+    document.getElementById('statRecords').textContent = records.length;
+    document.getElementById('statPurchased').textContent = totPurchased;
+    document.getElementById('statDistributed').textContent = totDistributed;
+    document.getElementById('statBalance').textContent = totBalance;
+
+    // Overview chart
+    drawChart('chartOverview', 'bar', {
+        labels: ['Purchased', 'Distributed', 'Returned', 'Balance'],
+        datasets: [{ label: 'Books', data: [totPurchased, totDistributed, totReturned, totBalance],
+            backgroundColor: ['#0f3a61','#3498db','#f39c12','#27ae60'] }]
+    });
+
+    // Subject breakdown chart
+    const subj = {};
+    records.forEach(r => { const k = (r.subject || 'Unknown').trim() || 'Unknown';
+        subj[k] = (subj[k]||0) + num(r.purchased); });
+    const subjEntries = Object.entries(subj).sort((a,b)=>b[1]-a[1]).slice(0,8);
+    drawChart('chartSubjects', 'bar', {
+        labels: subjEntries.map(e=>e[0]),
+        datasets: [{ label: 'Purchased', data: subjEntries.map(e=>e[1]), backgroundColor:'#0f3a61' }]
+    });
+
+    // Per-school comparison chart
+    const bySchool = {};
+    records.forEach(r => { bySchool[r._school] = (bySchool[r._school]||0) + num(r.purchased); });
+    drawChart('chartSchools', 'bar', {
+        labels: Object.keys(bySchool),
+        datasets: [{ label: 'Purchased', data: Object.values(bySchool), backgroundColor:'#3498db' }]
+    });
+
+    // Category distribution chart
+    const cat = {};
+    records.forEach(r => { const k = (r.category||'Uncategorized').trim() || 'Uncategorized';
+        cat[k] = (cat[k]||0) + num(r.purchased); });
+    drawChart('chartCategory', 'doughnut', {
+        labels: Object.keys(cat),
+        datasets: [{ data: Object.values(cat),
+            backgroundColor: ['#0f3a61','#3498db','#27ae60','#f39c12','#e74c3c','#9b59b6','#1abc9c'] }]
+    });
+
+    // Outstanding task summary
+    const tasks = records.filter(r => num(r.booksRequired) > 0 || num(r.balance) < 0)
+        .sort((a,b) => num(b.booksRequired) - num(a.booksRequired));
+    const taskEl = document.getElementById('taskList');
+    taskEl.innerHTML = tasks.length === 0
+        ? '<p style="color:var(--text-muted);">✅ Nothing pending. Everything is in order.</p>'
+        : tasks.map(r => {
+            const req = num(r.booksRequired), bal = num(r.balance);
+            const badge = bal < 0 ? `<span class="badge-danger">Short ${Math.abs(bal)}</span>`
+                : `<span class="badge-warn">Need ${req}</span>`;
+            return `<div class="task-item">
+                <div><strong>${escapeHtml(r.bookName||'—')}</strong><br>
+                <small style="color:var(--text-muted);">${escapeHtml(r._school)} • ${escapeHtml(r._class)} • ${escapeHtml(r.subject||'')}</small></div>
+                ${badge}</div>`;
+        }).join('');
+
+    // Recent activity summary
+    const recent = records.filter(r => r.modified_time)
+        .sort((a,b) => (b.modified_time||'').localeCompare(a.modified_time||'')).slice(0,15);
+    document.getElementById('activityList').innerHTML = recent.length === 0
+        ? '<p style="color:var(--text-muted);">No activity yet.</p>'
+        : recent.map(r => `<div class="task-item">
+            <div><strong>${escapeHtml(r.bookName||'—')}</strong><br>
+            <small style="color:var(--text-muted);">${escapeHtml(r._school)} • ${escapeHtml(r._class)}</small></div>
+            <span class="badge-ok">${escapeHtml(r.modified_time||'')}</span>
+        </div>`).join('');
+}
+
+function drawChart(id, type, data) {
+    if (charts[id]) charts[id].destroy();
+    charts[id] = new Chart(document.getElementById(id), {
+        type, data, options: { responsive:true, plugins:{ legend:{ position:'bottom' }}}
+    });
+}
+
+function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+loadReports();
+</script>
+<script src="app.js?v=4.13"></script>
+<script src="chatbot.js?v=4.13"></script>
+<script src="shell.js?v=4.13"></script>
+</body>
+</html>

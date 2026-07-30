@@ -1,0 +1,391 @@
+/* theme.css - Vedritam ERP design system (loads AFTER style.css and overrides it) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --v-primary:#2563EB; --v-primary-600:#1D4ED8; --v-primary-soft:#EFF6FF;
+  --v-success:#16A34A; --v-warning:#F59E0B; --v-danger:#DC2626; --v-info:#0EA5E9;
+  --v-bg:#F8FAFC; --v-card:#FFFFFF; --v-elev:#FFFFFF; --v-surface:#FFFFFF;
+  --v-text:#0F172A; --v-text-muted:#64748B; --v-border:#E2E8F0;
+  --v-radius:18px; --v-radius-sm:12px;
+  --v-shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.18);
+  --v-shadow-lg:0 12px 32px -12px rgba(15,23,42,.28);
+  --v-sidebar:#FFFFFF; --v-sidebar-hover:#F1F5F9;
+  --v-header-h:64px; --v-sidebar-w:256px;
+}
+html[data-theme="dark"]{
+  --v-bg:#0F172A; --v-card:rgba(30,41,59,.72); --v-elev:#1E293B; --v-surface:#1E293B;
+  --v-text:#E2E8F0; --v-text-muted:#94A3B8; --v-border:rgba(148,163,184,.18);
+  --v-primary-soft:rgba(37,99,235,.16);
+  --v-shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.7);
+  --v-shadow-lg:0 18px 44px -16px rgba(0,0,0,.75);
+  --v-sidebar:#1E293B; --v-sidebar-hover:rgba(148,163,184,.12);
+}
+
+
+html[data-theme] body{
+  font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--v-bg); color:var(--v-text);
+  margin:0; -webkit-font-smoothing:antialiased;
+}
+html[data-theme] a{color:inherit}
+html[data-theme] ::-webkit-scrollbar{width:10px;height:10px}
+html[data-theme] ::-webkit-scrollbar-thumb{background:var(--v-border);border-radius:99px}
+
+/* ---------- Shell ---------- */
+.v-header{
+  position:fixed; top:0; left:0; right:0; height:var(--v-header-h); z-index:60;
+  display:flex; align-items:center; gap:16px; padding:0 18px;
+  background:color-mix(in srgb,var(--v-elev) 88%, transparent);
+  backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--v-border);
+}
+.v-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.v-brand img{height:32px;width:auto;border-radius:8px}
+.v-brand b{font-size:15px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.v-burger{background:none;border:0;color:var(--v-text-muted);cursor:pointer;padding:8px;border-radius:10px;display:flex}
+.v-burger:hover{background:var(--v-sidebar-hover);color:var(--v-text)}
+.v-search{
+  flex:1; max-width:460px; display:flex; align-items:center; gap:8px;
+  background:var(--v-bg); border:1px solid var(--v-border); border-radius:12px; padding:8px 12px;
+}
+.v-search input{flex:1;border:0;background:none;outline:none;color:var(--v-text);font:inherit;font-size:14px}
+.v-search input::placeholder{color:var(--v-text-muted)}
+.v-head-actions{margin-left:auto;display:flex;align-items:center;gap:6px}
+.v-icon-btn{
+  position:relative;background:none;border:1px solid transparent;color:var(--v-text-muted);
+  cursor:pointer;padding:9px;border-radius:12px;display:flex;transition:.18s;
+}
+.v-icon-btn:hover{background:var(--v-sidebar-hover);color:var(--v-text)}
+.v-dot{position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--v-danger);border:2px solid var(--v-elev)}
+.v-user{display:flex;align-items:center;gap:9px;padding:6px 10px 6px 6px;border-radius:999px;border:1px solid var(--v-border);background:none;color:var(--v-text);cursor:pointer;font:inherit;font-size:13px;font-weight:600}
+.v-user:hover{background:var(--v-sidebar-hover)}
+.v-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--v-primary),#7C3AED);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;overflow:hidden}
+.v-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.v-menu{
+  position:fixed;top:calc(var(--v-header-h) - 2px);right:16px;min-width:190px;z-index:70;
+  background:var(--v-elev);border:1px solid var(--v-border);border-radius:14px;box-shadow:var(--v-shadow-lg);
+  padding:6px;display:none;
+}
+.v-menu.open{display:block}
+.v-menu a,.v-menu button{
+  display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border-radius:10px;
+  background:none;border:0;color:var(--v-text);font:inherit;font-size:14px;text-decoration:none;cursor:pointer;text-align:left;
+}
+.v-menu a:hover,.v-menu button:hover{background:var(--v-sidebar-hover)}
+.v-menu hr{border:0;border-top:1px solid var(--v-border);margin:5px 2px}
+
+.v-notifications{
+  position:fixed;top:calc(var(--v-header-h) - 6px);right:72px;width:min(360px,calc(100vw - 24px));z-index:72;
+  background:var(--v-elev);border:1px solid var(--v-border);border-radius:14px;box-shadow:var(--v-shadow-lg);
+  display:none;overflow:hidden;color:var(--v-text);
+}
+.v-notifications.open{display:block}
+.v-notifications-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--v-border)}
+.v-notifications-head button{border:0;background:none;color:var(--v-text-muted);cursor:pointer;display:flex;padding:4px;border-radius:8px}
+.v-notifications-head button:hover{background:var(--v-sidebar-hover);color:var(--v-text)}
+.v-notifications-body{display:flex;flex-direction:column;max-height:360px;overflow:auto}
+.v-note{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-bottom:1px solid var(--v-border)}
+.v-note:last-child{border-bottom:0}
+.v-note strong{font-size:13.5px;font-weight:700;color:var(--v-text)}
+.v-note span{font-size:12.5px;color:var(--v-text-muted);line-height:1.35}
+.v-note.warn{border-left:4px solid var(--v-danger);background:color-mix(in srgb,var(--v-danger) 8%,transparent)}
+
+.v-sidebar{
+  position:fixed;top:var(--v-header-h);bottom:0;left:0;width:var(--v-sidebar-w);z-index:50;
+  background:var(--v-sidebar);border-right:1px solid var(--v-border);
+  padding:14px 12px;overflow-y:auto;transition:width .22s ease,transform .22s ease;
+}
+.v-nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.v-nav a,.v-group-btn{
+  display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;
+  color:var(--v-text-muted);text-decoration:none;font-size:14px;font-weight:500;
+  border:0;background:none;width:100%;cursor:pointer;font-family:inherit;transition:.16s;
+}
+.v-nav a:hover,.v-group-btn:hover{background:var(--v-sidebar-hover);color:var(--v-text)}
+.v-nav a.active{background:var(--v-primary-soft);color:var(--v-primary);font-weight:600}
+html[data-theme="dark"] .v-nav a.active{color:#93C5FD}
+.v-nav a.active svg{color:inherit}
+.v-nav svg{width:18px;height:18px;flex:0 0 18px}
+.v-group-btn .v-chev{margin-left:auto;transition:transform .2s}
+.v-group.open .v-chev{transform:rotate(90deg)}
+.v-sub{list-style:none;margin:2px 0 4px;padding:0 0 0 30px;display:none;flex-direction:column;gap:1px}
+.v-group.open .v-sub{display:flex}
+.v-sub a{font-size:13.5px;padding:8px 12px}
+.v-side-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--v-text-muted);padding:14px 12px 6px;opacity:.7}
+
+body.v-collapsed .v-sidebar{width:72px}
+body.v-collapsed .v-sidebar .v-txt,body.v-collapsed .v-sidebar .v-chev,body.v-collapsed .v-side-label,body.v-collapsed .v-sub{display:none}
+body.v-collapsed .v-nav a,body.v-collapsed .v-group-btn{justify-content:center;padding:11px}
+body.v-collapsed .v-main{margin-left:72px}
+
+.v-main{margin-left:var(--v-sidebar-w);padding:calc(var(--v-header-h) + 26px) 26px 90px;transition:margin-left .22s ease;max-width:1500px}
+@media(max-width:900px){
+  .v-sidebar{transform:translateX(-100%)}
+  body.v-mobile-open .v-sidebar{transform:none;box-shadow:var(--v-shadow-lg)}
+  .v-main{margin-left:0;padding:calc(var(--v-header-h) + 18px) 14px 90px}
+  .v-search{display:none}
+}
+
+/* ---------- Cards / typography ---------- */
+.v-page-title{font-size:24px;font-weight:700;letter-spacing:-.02em;margin:0}
+.v-page-sub{color:var(--v-text-muted);font-size:14px;margin:4px 0 22px}
+.v-card{
+  background:var(--v-card);border:1px solid var(--v-border);border-radius:var(--v-radius);
+  box-shadow:var(--v-shadow);padding:20px;backdrop-filter:blur(8px);
+}
+.v-card h3{margin:0 0 14px;font-size:15px;font-weight:650;letter-spacing:-.01em}
+.v-grid{display:grid;gap:18px}
+.v-kpis{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.v-kpi{position:relative;overflow:hidden;color:#fff;border:0;padding:20px;border-radius:var(--v-radius);box-shadow:var(--v-shadow);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s}
+.v-kpi:hover{transform:translateY(-4px);box-shadow:var(--v-shadow-lg)}
+.v-kpi.blue{background:linear-gradient(135deg,#3B82F6,#2563EB 55%,#1E40AF)}
+.v-kpi.green{background:linear-gradient(135deg,#34D399,#16A34A 60%,#15803D)}
+.v-kpi.amber{background:linear-gradient(135deg,#FBBF24,#F59E0B 60%,#D97706)}
+.v-kpi.red{background:linear-gradient(135deg,#F87171,#DC2626 60%,#B91C1C)}
+.v-kpi .v-kpi-ico{position:absolute;right:-8px;top:-8px;opacity:.18}
+.v-kpi .v-kpi-ico svg{width:92px;height:92px}
+.v-kpi .lbl{font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.9}
+.v-kpi .val{font-size:32px;font-weight:800;letter-spacing:-.03em;margin:6px 0 2px}
+.v-kpi .delta{font-size:12.5px;font-weight:600;opacity:.92;display:flex;align-items:center;gap:5px}
+
+.v-charts{grid-template-columns:1.55fr 1fr}
+.v-lower{grid-template-columns:1.55fr 1fr}
+@media(max-width:1050px){.v-charts,.v-lower{grid-template-columns:1fr}}
+
+/* Activity */
+.v-act{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.v-act li{display:flex;gap:12px;align-items:flex-start;padding:11px 4px;border-bottom:1px solid var(--v-border)}
+.v-act li:last-child{border-bottom:0}
+.v-act .pip{width:9px;height:9px;border-radius:50%;margin-top:6px;flex:0 0 9px}
+.pip.green{background:var(--v-success)}.pip.amber{background:var(--v-warning)}
+.pip.blue{background:var(--v-primary)}.pip.red{background:var(--v-danger)}
+.v-act .txt{font-size:14px;font-weight:500;line-height:1.35}
+.v-act .meta{font-size:12px;color:var(--v-text-muted);margin-top:2px}
+
+/* Quick actions */
+.v-qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.v-qa a{
+  display:flex;align-items:center;gap:11px;padding:14px;border-radius:var(--v-radius-sm);
+  border:1px solid var(--v-border);background:var(--v-elev);text-decoration:none;color:var(--v-text);
+  font-size:14px;font-weight:600;transition:.2s cubic-bezier(.2,.8,.2,1);
+}
+.v-qa a:hover{transform:translateY(-3px);box-shadow:var(--v-shadow-lg);border-color:color-mix(in srgb,var(--v-primary) 45%,transparent)}
+.v-qa .ico{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--v-primary-soft);color:var(--v-primary)}
+html[data-theme="dark"] .v-qa .ico{color:#93C5FD}
+
+/* Bars */
+.v-bars{display:flex;flex-direction:column;gap:14px}
+.v-bar-row .t{display:flex;justify-content:space-between;font-size:13px;font-weight:550;margin-bottom:6px}
+.v-bar-row .t span:last-child{color:var(--v-text-muted);font-weight:600}
+.v-track{height:9px;border-radius:99px;background:var(--v-border);overflow:hidden}
+.v-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#60A5FA,var(--v-primary));width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+
+/* School cards */
+.v-schools{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.v-school{background:var(--v-card);border:1px solid var(--v-border);border-radius:var(--v-radius);box-shadow:var(--v-shadow);padding:18px;transition:.22s cubic-bezier(.2,.8,.2,1)}
+.v-school:hover{transform:translateY(-4px);box-shadow:var(--v-shadow-lg)}
+.v-school h4{margin:0;font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.v-school .code{font-size:12.5px;color:var(--v-text-muted);margin-top:3px}
+.v-school .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.v-school .stats div{background:var(--v-bg);border-radius:12px;padding:9px 8px;text-align:center}
+.v-school .stats .n{font-size:16px;font-weight:700}
+.v-school .stats .k{font-size:10.5px;color:var(--v-text-muted);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.v-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 14px;border-radius:12px;border:0;background:var(--v-primary);color:#fff;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;transition:.18s}
+.v-btn:hover{background:var(--v-primary-600)}
+.v-btn.ghost{background:none;border:1px solid var(--v-border);color:var(--v-text)}
+.v-btn.ghost:hover{background:var(--v-sidebar-hover)}
+
+/* FAB */
+.v-fab-wrap{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.v-fab-items{display:flex;flex-direction:column;align-items:flex-end;gap:10px;opacity:0;pointer-events:none;transform:translateY(10px) scale(.96);transition:.22s cubic-bezier(.2,.8,.2,1)}
+.v-fab-wrap.open .v-fab-items{opacity:1;pointer-events:auto;transform:none}
+.v-fab-items button,.v-fab-items a{
+  display:flex;align-items:center;gap:10px;padding:10px 15px;border-radius:999px;cursor:pointer;
+  background:var(--v-elev);color:var(--v-text);border:1px solid var(--v-border);box-shadow:var(--v-shadow);
+  font:inherit;font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;
+}
+.v-fab-items button:hover,.v-fab-items a:hover{background:var(--v-sidebar-hover)}
+.v-fab{
+  width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#3B82F6,#2563EB);box-shadow:0 10px 26px -8px rgba(37,99,235,.75);
+  display:grid;place-items:center;transition:transform .25s cubic-bezier(.2,.8,.2,1)
+}
+.v-fab-wrap.open .v-fab{transform:rotate(135deg)}
+.v-scrim{position:fixed;inset:0;background:rgba(15,23,42,.35);z-index:40;display:none}
+body.v-mobile-open .v-scrim{display:block}
+
+/* Legacy overrides so old pages inherit the new look */
+html[data-theme] .app-header{display:none!important}
+html[data-theme] .main-content{background:transparent}
+html[data-theme] .dash-card,html[data-theme] .stat-card,html[data-theme] .chart-card,
+html[data-theme] .split-pane{
+  background:var(--v-card)!important;border:1px solid var(--v-border)!important;
+  border-radius:var(--v-radius)!important;box-shadow:var(--v-shadow)!important;color:var(--v-text);
+}
+html[data-theme] .form-control{background:var(--v-elev);color:var(--v-text);border:1px solid var(--v-border);border-radius:12px}
+html[data-theme] .btn-primary{background:var(--v-primary);border-radius:12px}
+html[data-theme] .btn-primary:hover{background:var(--v-primary-600)}
+html[data-theme] .list-item{border-color:var(--v-border)!important;color:var(--v-text)}
+html[data-theme] .list-item:hover{background:var(--v-sidebar-hover)}
+html[data-theme] table{color:var(--v-text)}
+html[data-theme] .stat-card .value{color:var(--v-primary)}
+html[data-theme="dark"] .modal-content,html[data-theme="dark"] .modal-box{background:var(--v-elev);color:var(--v-text)}
+
+/* ---------- Data tables in dark theme (Users, Ledger, Activity) ---------- */
+html[data-theme="dark"] .table-wrapper{
+  background:var(--v-card)!important;border:1px solid var(--v-border)!important;
+  border-radius:var(--v-radius-sm);box-shadow:var(--v-shadow);
+}
+html[data-theme="dark"] .spreadsheet tbody tr{background-color:transparent!important;color:var(--v-text)}
+html[data-theme="dark"] .spreadsheet tbody tr:nth-child(even){background-color:rgba(148,163,184,.06)!important}
+html[data-theme="dark"] .spreadsheet tbody tr:hover{background-color:rgba(59,130,246,.10)!important}
+html[data-theme="dark"] .spreadsheet th,
+html[data-theme="dark"] .spreadsheet td{
+  border-color:var(--v-border)!important;color:var(--v-text);
+}
+html[data-theme="dark"] .spreadsheet th{
+  background:#1E293B!important;color:#E2E8F0;border-right-color:rgba(148,163,184,.18)!important;
+}
+html[data-theme="dark"] .spreadsheet td.editable:focus{background:rgba(37,99,235,.15)!important;color:#fff}
+html[data-theme="dark"] .spreadsheet td.dirty{background-color:rgba(245,158,11,.18)!important}
+html[data-theme="dark"] .muted-small{color:var(--v-text-muted)!important}
+html[data-theme="dark"] .filter-bar .form-control,
+html[data-theme="dark"] .filter-bar select{background:var(--v-elev);color:var(--v-text);border-color:var(--v-border)}
+html[data-theme="dark"] .toast{background:var(--v-elev)!important;color:var(--v-text)!important;border:1px solid var(--v-border);border-left-width:4px;box-shadow:var(--v-shadow-lg)}
+
+/* ---------- Ledger density: fits at 100% zoom without horizontal scroll pain ---------- */
+html[data-theme] .ledger-container{padding:.5rem 0 0 0}
+html[data-theme] .ledger-header{gap:10px;flex-wrap:wrap;margin-bottom:.5rem}
+html[data-theme] .ledger-header h2{font-size:18px;margin:2px 0 0}
+html[data-theme] .toolbar{flex-wrap:wrap;gap:6px}
+html[data-theme] .toolbar .form-control{width:200px!important}
+html[data-theme] .toolbar .btn{padding:6px 10px;font-size:.8rem}
+html[data-theme] #ledgerTable{font-size:12.5px;table-layout:auto}
+html[data-theme] #ledgerTable th,
+html[data-theme] #ledgerTable td{padding:4px 6px;white-space:nowrap}
+html[data-theme] #ledgerTable .col-num{width:60px;font-size:12px}
+html[data-theme] #ledgerTable .col-action{width:36px}
+html[data-theme] #ledgerTable th{font-size:11.5px;letter-spacing:.02em}
+html[data-theme] .table-wrapper{max-height:calc(100vh - var(--v-header-h) - 160px);overflow:auto}
+
+/* ---------- Locked (needs class) Open Ledger button — clickable, obviously not ready ---------- */
+html[data-theme] #btnOpenLedger.is-locked{opacity:.55;cursor:not-allowed}
+html[data-theme] #btnOpenLedger.is-locked:hover{background:var(--v-primary)}
+
+/* ---- fixes / final polish ---- */
+html[data-theme] h1,html[data-theme] h2,html[data-theme] h3,
+html[data-theme] h4,html[data-theme] h5,html[data-theme] .pane-header h3{color:var(--v-text)!important}
+html[data-theme] .v-page-sub,html[data-theme] .v-school .code,
+html[data-theme] .v-act .meta,html[data-theme] .stats .k{color:var(--v-text-muted)!important}
+/* the old chat launcher is now an entry in the floating quick-action stack */
+html[data-theme] #cbBtn{display:none!important}
+html[data-theme] #cbBox{bottom:100px;right:24px;border-radius:18px;background:var(--v-elev);color:var(--v-text)}
+html[data-theme="dark"] #cbLog{background:rgba(15,23,42,.6)}
+html[data-theme="dark"] .cbAi{background:#1E293B;color:var(--v-text);border-color:var(--v-border)}
+html[data-theme="dark"] #cbForm{background:var(--v-elev);border-color:var(--v-border)}
+html[data-theme="dark"] #cbInput{background:#0F172A;color:var(--v-text);border-color:var(--v-border)}
+.v-bar-row .t{gap:14px}
+.v-bar-row .t span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v-bar-row .t span:last-child{flex:0 0 auto}
+
+/* neutralise legacy layout/background from style.css */
+html[data-theme] body{height:auto!important;min-height:100vh;overflow:visible!important;display:block!important}
+html[data-theme] .main-content{
+  background:transparent!important;background-image:none!important;
+  overflow:visible!important;flex:none!important;
+}
+html[data-theme] .main-content h2{
+  color:var(--v-text)!important;text-shadow:none!important;text-align:left;font-size:20px;font-weight:700;
+}
+html[data-theme] .split-view{gap:18px}
+html[data-theme] .pane-header{border-color:var(--v-border)!important;background:transparent!important}
+html[data-theme] .pane-body{background:transparent!important}
+
+/* inline margin:auto on legacy pages must not slide content under the sidebar */
+html[data-theme] .v-main{margin-left:var(--v-sidebar-w)!important;margin-right:0!important;margin-top:0!important}
+html[data-theme] body.v-collapsed .v-main{margin-left:72px!important}
+@media(max-width:900px){html[data-theme] .v-main{margin-left:0!important}}
+html[data-theme] .dash-card{text-align:left!important}
+
+@media(max-width:640px){
+  .v-header{gap:8px;padding:0 10px}
+  .v-brand b{font-size:13px;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+  .v-head-actions{gap:2px}
+  .v-user span:not(.v-avatar){display:none}
+  .v-user{border:0;padding:4px}
+  .v-fab-wrap{right:16px;bottom:16px}
+}
+
+/* ---------- Fixes: ledger scroll, FAB overlap on Open Ledger, menu clickability ---------- */
+/* Ledger page uses <main class="ledger-container"> — give it the same sidebar offset as .v-main */
+html[data-theme] .ledger-container{
+  margin-left: var(--v-sidebar-w) !important;
+  padding: calc(var(--v-header-h) + 12px) 20px 100px !important;
+  transition: margin-left .22s ease;
+  height: auto !important;
+  min-height: 100vh;
+  max-width: none;
+}
+html[data-theme] body.v-collapsed .ledger-container{ margin-left: 72px !important; }
+@media(max-width:900px){
+  html[data-theme] .ledger-container{ margin-left: 0 !important; padding: calc(var(--v-header-h) + 12px) 12px 100px !important; }
+}
+/* The scrollable data grid inside the ledger */
+html[data-theme] .ledger-container .table-wrapper{
+  max-height: calc(100vh - var(--v-header-h) - 170px);
+  overflow: auto !important;
+}
+
+/* Dark-mode surfaces for cards that were hard-coded to white via var(--v-surface,#fff) */
+html[data-theme="dark"] .dist-card,
+html[data-theme="dark"] .tf-card,
+html[data-theme="dark"] .lb-card,
+html[data-theme="dark"] .mb-card,
+html[data-theme="dark"] .ln-card{
+  background: var(--v-elev) !important;
+  border-color: var(--v-border) !important;
+  color: var(--v-text);
+}
+html[data-theme="dark"] .dist-tbl th, html[data-theme="dark"] .dist-tbl td,
+html[data-theme="dark"] .tf-tbl th,   html[data-theme="dark"] .tf-tbl td,
+html[data-theme="dark"] .lb-tbl th,   html[data-theme="dark"] .lb-tbl td,
+html[data-theme="dark"] .mb-tbl th,   html[data-theme="dark"] .mb-tbl td,
+html[data-theme="dark"] .ln-tbl th,   html[data-theme="dark"] .ln-tbl td{
+  border-color: var(--v-border) !important;
+  color: var(--v-text);
+}
+html[data-theme="dark"] .dist-form select, html[data-theme="dark"] .dist-form input, html[data-theme="dark"] .dist-form textarea,
+html[data-theme="dark"] .tf-form select,   html[data-theme="dark"] .tf-form input,   html[data-theme="dark"] .tf-form textarea,
+html[data-theme="dark"] .lb-form select,   html[data-theme="dark"] .lb-form input,   html[data-theme="dark"] .lb-form textarea,
+html[data-theme="dark"] .mb-form select,   html[data-theme="dark"] .mb-form input,
+html[data-theme="dark"] .ln-form select,   html[data-theme="dark"] .ln-form input,   html[data-theme="dark"] .ln-form textarea{
+  background: rgba(15,23,42,.6) !important;
+  border-color: var(--v-border) !important;
+  color: var(--v-text) !important;
+}
+html[data-theme="dark"] .dist-card h3,
+html[data-theme="dark"] .tf-card h3,
+html[data-theme="dark"] .lb-card h3,
+html[data-theme="dark"] .mb-card h3,
+html[data-theme="dark"] .ln-card h3{ color: var(--v-text) !important; }
+
+/* Open Ledger / summary action bar — reserve room so the floating FAB
+   (bottom-right, fixed) never sits on top of the button's right half. */
+html[data-theme] .split-pane .pane-header:last-child{
+  padding-right: 110px !important;
+  position: relative;
+  z-index: 5;
+  background: transparent !important;
+}
+#btnOpenLedger{ position: relative; z-index: 6; }
+
+/* Ensure the FAB never captures clicks on the button below it when closed */
+.v-fab-wrap:not(.open) .v-fab-items{ pointer-events: none !important; }
+
+/* Make icon SVGs inside menu buttons and Open Ledger not eat click events
+   (so clicking any part of the button — including the icon or empty right
+   padding — reliably triggers the button). */
+.v-menu a i, .v-menu a svg,
+.v-menu button i, .v-menu button svg,
+#btnOpenLedger i, #btnOpenLedger svg{ pointer-events: none; }
+.v-menu a, .v-menu button{ cursor: pointer; }

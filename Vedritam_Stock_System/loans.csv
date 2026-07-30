@@ -1,0 +1,2 @@
+id,school_id,catalog_id,member_id,issued_at,due_at,returned_at,status,remarks,created_by
+LN_47248673,1,B_b63fcf8b,M_1d0f9de4,2026-07-30 01:01:16,2026-08-15,2026-07-30 01:01:18,Returned,,admin

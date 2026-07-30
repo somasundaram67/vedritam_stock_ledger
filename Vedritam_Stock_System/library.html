@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library - Vedritam</title>
+<script>(function(){try{var t=localStorage.getItem('v_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}try{if(localStorage.getItem('v_mode')!=='library')localStorage.setItem('v_mode','library');}catch(e){}})();</script>
+<link rel="stylesheet" href="style.css?v=4.13">
+<link rel="stylesheet" href="theme.css?v=4.13">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  .lb-grid{display:grid;grid-template-columns:1fr 2fr;gap:18px}
+  @media(max-width:900px){.lb-grid{grid-template-columns:1fr}}
+  .lb-card{background:var(--v-surface,#fff);border:1px solid var(--v-border,#e2e8f0);border-radius:14px;padding:18px}
+  .lb-card h3{margin:0 0 12px;font-size:16px;font-weight:650}
+  .lb-form label{display:block;font-size:12.5px;font-weight:600;color:var(--text-muted,#64748B);margin:8px 0 4px}
+  .lb-form input,.lb-form select,.lb-form textarea{width:100%;padding:9px 11px;border:1px solid var(--v-border,#e2e8f0);border-radius:8px;background:transparent;color:inherit;font:inherit}
+  .lb-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+  .lb-tbl th,.lb-tbl td{padding:9px 8px;border-bottom:1px solid var(--v-border,#e2e8f0);text-align:left}
+  .lb-tbl th{font-size:12px;color:var(--text-muted,#64748B);text-transform:uppercase;letter-spacing:.03em}
+  .lb-reminder{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.35);color:#B91C1C;padding:12px 14px;border-radius:10px;margin-bottom:14px}
+</style>
+</head>
+<body data-page="library">
+<main class="main-content">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+    <div>
+      <h1 class="v-page-title">Library — Books</h1>
+      <p class="v-page-sub">Catalog of every title held by your school. Loans move copies between "available" and "on loan".</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a class="v-btn ghost" href="library-members.html"><i data-lucide="user-square-2"></i> Members</a>
+      <a class="v-btn ghost" href="library-loans.html"><i data-lucide="book-marked"></i> Loans</a>
+    </div>
+  </div>
+
+  <div id="lbReminder" class="lb-reminder" style="display:none"></div>
+
+  <!-- Library schools, kept separate from ledger schools. -->
+  <div class="lb-card" style="margin-bottom:18px">
+    <h3>Library schools</h3>
+    <p style="margin:-6px 0 12px;color:var(--v-text-muted);font-size:13px">
+      These schools belong to the library only — they don't touch the stock ledger.
+    </p>
+    <form id="lsForm" class="lb-form" style="display:grid;grid-template-columns:2fr 1fr 2fr auto;gap:10px;align-items:end">
+      <div><label>School name *</label><input id="lsName" required></div>
+      <div><label>Code</label><input id="lsCode"></div>
+      <div><label>Location</label><input id="lsLoc"></div>
+      <button class="v-btn" type="submit" style="width:auto;padding:10px 16px">Add school</button>
+    </form>
+    <div style="margin-top:14px;max-height:220px;overflow:auto">
+      <table class="lb-tbl">
+        <thead><tr><th>Name</th><th>Code</th><th>Location</th><th class="admin-only" style="width:80px"></th></tr></thead>
+        <tbody id="lsBody"><tr><td colspan="4" style="text-align:center;color:var(--v-text-muted)">Loading...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="lb-grid">
+    <div class="lb-card">
+      <h3>Add a book</h3>
+      <form id="bookForm" class="lb-form">
+        <label>School</label><select id="bSchool" required></select>
+        <label>Title *</label><input id="bTitle" required>
+        <label>Accession no.</label><input id="bAcc" placeholder="unique per school">
+        <label>Author</label><input id="bAuthor">
+        <label>Publisher</label><input id="bPub">
+        <label>Category</label><input id="bCat" placeholder="e.g. Fiction, Reference">
+        <label>Copies</label><input id="bCopies" type="number" min="1" value="1">
+        <label>Remarks</label><textarea id="bRemarks" rows="2"></textarea>
+        <button class="v-btn" type="submit" style="margin-top:14px">Add to catalog</button>
+      </form>
+    </div>
+
+    <div class="lb-card">
+      <h3>Catalog</h3>
+      <input id="bSearch" placeholder="Search title / accession / author" style="width:100%;padding:9px 11px;border:1px solid var(--v-border,#e2e8f0);border-radius:8px;background:transparent;color:inherit;margin-bottom:10px">
+      <div style="max-height:560px;overflow:auto">
+        <table class="lb-tbl">
+          <thead><tr><th>Acc.</th><th>Title</th><th>Author</th><th>Category</th><th>Available / Copies</th><th class="admin-only"></th></tr></thead>
+          <tbody id="bBody"><tr><td colspan="6" style="text-align:center;color:var(--text-muted)">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast-container"></div>
+<script src="app.js?v=4.13"></script>
+<script src="shell.js?v=4.13"></script>
+<script src="chatbot.js?v=4.13"></script>
+<script>
+(function(){
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function toast(m,t){ if(window.App&&App.ui) App.ui.showToast(m,t||'success'); }
+  var isAdmin = localStorage.getItem('v_role')==='admin';
+  var allBooks = [];
+
+  var librarySchools = [];
+  async function loadSchools(){
+    librarySchools = await App.apiCall('/library/schools');
+    // Populate the book-form <select> and the schools table together.
+    var sel = document.getElementById('bSchool');
+    if (!librarySchools.length) {
+      sel.innerHTML = '<option value="">Add a library school first</option>';
+    } else {
+      sel.innerHTML = librarySchools.map(function(s){
+        return '<option value="'+s.id+'">'+esc(s.name)+'</option>';
+      }).join('');
+    }
+    var body = document.getElementById('lsBody');
+    if (!librarySchools.length) {
+      body.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--v-text-muted)">No library schools yet.</td></tr>';
+    } else {
+      body.innerHTML = librarySchools.map(function(s){
+        return '<tr><td><b>'+esc(s.name)+'</b></td><td>'+esc(s.code||'—')+'</td><td>'+esc(s.location||'—')+'</td>'+
+          '<td class="admin-only">'+(isAdmin?'<button class="v-btn ghost" data-lsdel="'+s.id+'" style="padding:4px 10px">Delete</button>':'')+'</td></tr>';
+      }).join('');
+    }
+    if(!isAdmin) document.querySelectorAll('.admin-only').forEach(function(el){ el.style.display='none'; });
+  }
+  document.getElementById('lsForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    try{
+      await App.apiCall('/library/schools','POST',{
+        name: document.getElementById('lsName').value,
+        code: document.getElementById('lsCode').value,
+        location: document.getElementById('lsLoc').value,
+      });
+      toast('Library school added.');
+      this.reset(); loadSchools();
+    }catch(err){ toast(err.message,'error'); }
+  });
+  document.getElementById('lsBody').addEventListener('click', async function(e){
+    var b = e.target.closest('button[data-lsdel]'); if(!b) return;
+    if(!confirm('Delete this library school? Books/members already attached will remain but become unlisted.')) return;
+    try{ await App.apiCall('/library/schools/'+b.dataset.lsdel,'DELETE'); toast('Deleted.'); loadSchools(); }
+    catch(err){ toast(err.message,'error'); }
+  });
+  function render(list){
+    var body = document.getElementById('bBody');
+    if(!list.length){ body.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--text-muted)">No books yet.</td></tr>'; return; }
+    body.innerHTML = list.map(function(b){
+      return '<tr><td>'+esc(b.accession)+'</td><td><b>'+esc(b.title)+'</b></td><td>'+esc(b.author)+'</td><td>'+esc(b.category)+'</td>'+
+        '<td>'+esc(b.available)+' / '+esc(b.copies)+'</td>'+
+        '<td class="admin-only">'+(isAdmin?'<button class="v-btn ghost" data-del="'+b.id+'" style="padding:4px 10px">Delete</button>':'')+'</td></tr>';
+    }).join('');
+    if(!isAdmin) document.querySelectorAll('.admin-only').forEach(function(el){ el.style.display='none'; });
+  }
+  async function loadBooks(){
+    allBooks = await App.apiCall('/library/catalog');
+    render(allBooks);
+  }
+  async function loadReminders(){
+    try{
+      var d = await App.apiCall('/library/reminders');
+      var over = (d.counts&&d.counts.overdue)||0, soon = (d.counts&&d.counts.due_soon)||0;
+      var el = document.getElementById('lbReminder');
+      if(over||soon){ el.style.display=''; el.innerHTML = '<b>Reminder:</b> '+over+' overdue and '+soon+' due within 3 days. See <a href="library-loans.html" style="color:inherit;text-decoration:underline">Loans</a>.'; }
+    }catch(e){}
+  }
+
+  document.getElementById('bookForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    try{
+      await App.apiCall('/library/catalog','POST',{
+        schoolId: parseInt(document.getElementById('bSchool').value,10),
+        title: document.getElementById('bTitle').value,
+        accession: document.getElementById('bAcc').value,
+        author: document.getElementById('bAuthor').value,
+        publisher: document.getElementById('bPub').value,
+        category: document.getElementById('bCat').value,
+        copies: parseInt(document.getElementById('bCopies').value||'1',10),
+        remarks: document.getElementById('bRemarks').value,
+      });
+      toast('Book added.');
+      this.reset(); document.getElementById('bCopies').value='1'; loadBooks();
+    }catch(err){ toast(err.message,'error'); }
+  });
+  document.getElementById('bBody').addEventListener('click', async function(e){
+    var b = e.target.closest('button[data-del]'); if(!b) return;
+    if(!confirm('Delete this book from the catalog?')) return;
+    try{ await App.apiCall('/library/catalog/'+b.dataset.del,'DELETE'); toast('Deleted.'); loadBooks(); }
+    catch(err){ toast(err.message,'error'); }
+  });
+  document.getElementById('bSearch').addEventListener('input', function(){
+    var q = this.value.trim().toLowerCase();
+    if(!q){ render(allBooks); return; }
+    render(allBooks.filter(function(b){
+      return (b.title||'').toLowerCase().indexOf(q)>=0
+          || (b.accession||'').toLowerCase().indexOf(q)>=0
+          || (b.author||'').toLowerCase().indexOf(q)>=0;
+    }));
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!localStorage.getItem('v_token')){ window.location.href='index.html'; return; }
+    loadSchools(); loadBooks(); loadReminders();
+  });
+})();
+</script>
+</body>
+</html>
