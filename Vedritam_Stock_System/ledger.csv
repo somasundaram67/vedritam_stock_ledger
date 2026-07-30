@@ -1,2 +1,0 @@
-id,school_id,class_id,bookName,subject,publication,vendor,category,invoiceRef,strength,purchased,distributed,returned,balance,booksRequired,remarks,created_by,created_time,modified_by,modified_time
-L_f83ce688,1,1,English Reader,,,,,,90,100,0,0,100,0,,admin,2026-07-30 00:59:15,admin,2026-07-30 00:59:22
