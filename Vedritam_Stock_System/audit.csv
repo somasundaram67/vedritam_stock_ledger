@@ -1,0 +1,31 @@
+id,timestamp,username,role,action,entity,entity_id,details
+A_d7d7069601,2026-07-30 00:57:12,admin,admin,LOGIN,auth,admin,Signed in
+A_3cb0741224,2026-07-30 00:58:12,admin,admin,LOGIN,auth,admin,Signed in
+A_5459626fe0,2026-07-30 00:58:16,admin,admin,SCHOOL_CREATE,school,1,Added 'Test School A'
+A_1a3d2098ad,2026-07-30 00:58:19,admin,admin,CLASS_CREATE,class,1:1,Added class 'Class 5-A' (strength 90)
+A_3ac70b885b,2026-07-30 00:58:25,admin,admin,LEDGER_SYNC,ledger,1:1,added 'New MathematicsBook'
+A_a891e9908b,2026-07-30 00:58:28,admin,admin,LEDGER_SYNC,ledger,1:1,deleted 'New MathematicsBook'
+A_a9b0e22163,2026-07-30 00:59:05,admin,admin,LOGIN,auth,admin,Signed in
+A_fbd5ac0f63,2026-07-30 00:59:15,admin,admin,LEDGER_SYNC,ledger,1:1,added 'English Reader'
+A_e1af79d0f2,2026-07-30 00:59:20,admin,admin,DISTRIBUTION_ISSUE,distribution,1:1:L_f83ce688,Issued 5 of 'English Reader' to Mrs. Sharma
+A_c6564c1ec1,2026-07-30 00:59:22,admin,admin,DISTRIBUTION_DELETE,distribution,D_c873afde,Reversed 5 of 'English Reader'
+A_6764e01142,2026-07-30 01:00:03,admin,admin,LOGIN,auth,admin,Signed in
+A_7ec20d8e94,2026-07-30 01:00:08,admin,admin,SCHOOL_CREATE,school,2,Added 'Test School B'
+A_f2d26f179f,2026-07-30 01:00:12,admin,admin,TRANSFER_REQUEST,transfer,T_55270f81,3 of 'English Reader' from S1 -> S2
+A_58c1559eea,2026-07-30 01:00:13,admin,admin,TRANSFER_APPROVED,transfer,T_55270f81,Transfer marked Approved
+A_f8c139a877,2026-07-30 01:00:15,admin,admin,TRANSFER_COMPLETED,transfer,T_55270f81,Transfer marked Completed
+A_33f167d01b,2026-07-30 01:01:03,admin,admin,LOGIN,auth,admin,Signed in
+A_2845bdf5cf,2026-07-30 01:01:07,admin,admin,LIBRARY_SCHOOL_ADD,library_school,1,Added library school 'Library School A'
+A_86a0b0de6b,2026-07-30 01:01:08,admin,admin,LIBRARY_BOOK_ADD,catalog,B_b63fcf8b,Added 'Wings of Fire' x3
+A_b6a079fb5b,2026-07-30 01:01:12,admin,admin,LIBRARY_MEMBER_ADD,member,M_1d0f9de4,"Registered Riya (UID U1, 8-B)"
+A_55b998c526,2026-07-30 01:01:16,admin,admin,LIBRARY_LOAN_ISSUE,loan,LN_47248673,Loan due 2026-08-15
+A_539ba0c926,2026-07-30 01:01:18,admin,admin,LIBRARY_LOAN_RETURN,loan,LN_47248673,Book returned
+A_1ada9ae1f8,2026-07-30 01:01:22,admin,admin,USER_CREATE,user,teststaff,Created school account (status Active)
+A_a4256db8e7,2026-07-30 01:01:32,admin,admin,LEDGER_EXPORT,ledger,1:1,Downloaded CSV for Class_5-A
+A_aa0f7dc231,2026-07-30 01:01:59,admin,admin,LOGIN,auth,admin,Signed in
+A_bb1a9dfb90,2026-07-30 01:02:58,admin,admin,LOGIN,auth,admin,Signed in
+A_8e7e417859,2026-07-30 01:05:37,admin,admin,LOGIN,auth,admin,Signed in
+A_5f355f87de,2026-07-30 01:05:46,admin,admin,TRANSFER_REQUEST,transfer,T_0c727855,3 of 'English Reader' from S1 -> S2
+A_fe4b3810b4,2026-07-30 01:05:48,admin,admin,TRANSFER_APPROVED,transfer,T_0c727855,Transfer marked Approved
+A_1b3a448a0b,2026-07-30 01:05:50,admin,admin,TRANSFER_COMPLETED,transfer,T_0c727855,Transfer marked Completed
+A_b08dd0b5cc,2026-07-30 06:56:31,admin,admin,LOGIN,auth,admin,Signed in

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-do List - Vedritam</title>
+<script>(function(){try{var t=localStorage.getItem('v_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<link rel="stylesheet" href="style.css?v=4.13">
+<link rel="stylesheet" href="theme.css?v=4.13">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  .td-card{background:var(--v-elev);border:1px solid var(--v-border);border-radius:14px;padding:18px;color:var(--v-text)}
+  .td-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .td-form input[type="text"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--v-border);border-radius:10px;background:transparent;color:inherit;font:inherit}
+  .td-tbl{width:100%;border-collapse:collapse;font-size:14px}
+  .td-tbl th,.td-tbl td{padding:10px 8px;border-bottom:1px solid var(--v-border);text-align:left;vertical-align:middle}
+  .td-tbl th{font-size:12px;color:var(--v-text-muted);text-transform:uppercase;letter-spacing:.03em}
+  .td-tbl td.done{text-align:center;width:80px}
+  .td-tbl input[type="checkbox"]{width:18px;height:18px;cursor:pointer;accent-color:var(--v-primary)}
+  .td-empty{padding:20px;text-align:center;color:var(--v-text-muted)}
+  .td-del{border:0;background:transparent;color:var(--v-text-muted);cursor:pointer;font-size:15px;line-height:1;padding:4px 6px;border-radius:8px}
+  .td-del:hover{background:rgba(239,68,68,.14);color:#EF4444}
+</style>
+</head>
+<body data-page="todo">
+<main class="main-content">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+    <div>
+      <h1 class="v-page-title">To-do list</h1>
+      <p class="v-page-sub">Track tasks for yourself. Tick a task to mark it done, or use the Del button to remove it.</p>
+    </div>
+  </div>
+
+  <div class="td-card">
+    <form class="td-form" id="tdForm" onsubmit="tdAddTask(); return false;">
+      <input type="text" id="tdInput" placeholder="What needs to be done?" maxlength="200" onkeydown="if(event.key==='Enter'){event.preventDefault();tdAddTask();}">
+      <button type="button" id="tdAdd" class="v-btn" style="width:auto;padding:10px 18px" onclick="tdAddTask()">Add task</button>
+    </form>
+
+    <table class="td-tbl">
+      <thead>
+        <tr><th style="width:60px">#</th><th>Task</th><th style="width:180px">Added</th><th class="done">Done</th><th class="done">Del</th></tr>
+      </thead>
+      <tbody id="tdBody">
+        <tr><td colspan="5" class="td-empty">No tasks yet - add one above.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<div id="toast-container"></div>
+
+<script>
+/* To-do list: plain top-level functions so the buttons always have something to call. */
+var TD_KEY = 'v_todo_' + (localStorage.getItem('v_username') || 'guest');
+
+function tdLoad(){ try { return JSON.parse(localStorage.getItem(TD_KEY) || '[]') || []; } catch (e) { return []; } }
+function tdSave(list){
+  try { localStorage.setItem(TD_KEY, JSON.stringify(list)); return true; }
+  catch (e) { tdNote('Could not save the task in this browser.'); return false; }
+}
+function tdNote(msg){
+  if (window.App && App.ui && App.ui.showToast) App.ui.showToast(msg, 'error');
+  else alert(msg);
+}
+function tdEsc(v){
+  return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
+function tdRender(){
+  var list = tdLoad();
+  var body = document.getElementById('tdBody');
+  if (!body) return;
+  if (!list.length) {
+    body.innerHTML = '<tr><td colspan="5" class="td-empty">No tasks yet - add one above.</td></tr>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = tdEsc(item.id);
+    html += '<tr data-id="' + id + '">' +
+      '<td>' + (i + 1) + '</td>' +
+      '<td>' + tdEsc(item.text) + '</td>' +
+      '<td style="color:var(--v-text-muted);font-size:12.5px">' + tdEsc(item.added) + '</td>' +
+      '<td class="done"><input type="checkbox" aria-label="Mark done" onchange="tdDoneTask(\'' + id + '\')"></td>' +
+      '<td class="done"><button type="button" class="td-del" aria-label="Delete task" onclick="tdDeleteTask(\'' + id + '\')">&#10006;</button></td>' +
+      '</tr>';
+  }
+  body.innerHTML = html;
+}
+
+function tdAddTask(){
+  var input = document.getElementById('tdInput');
+  if (!input) return;
+  var text = (input.value || '').trim();
+  if (!text) { input.focus(); return; }
+  var list = tdLoad();
+  list.push({
+    id: 't_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+    text: text,
+    added: new Date().toLocaleString()
+  });
+  if (!tdSave(list)) return;
+  input.value = '';
+  tdRender();
+  input.focus();
+}
+
+function tdDeleteTask(id){
+  if (!id) return;
+  tdSave(tdLoad().filter(function (it) { return it.id !== id; }));
+  tdRender();
+}
+
+function tdDoneTask(id){
+  setTimeout(function () { tdDeleteTask(id); }, 120);
+}
+
+function tdStart(){
+  if (!localStorage.getItem('v_token')) { window.location.href = 'index.html'; return; }
+  tdRender();
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tdStart);
+else tdStart();
+</script>
+
+<script src="app.js?v=4.13"></script>
+<script src="shell.js?v=4.13"></script>
+</body>
+</html>
