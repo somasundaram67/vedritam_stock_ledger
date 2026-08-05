@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ledger - Vedritam Stock Ledger</title>
+    <script>(function(){try{var t=localStorage.getItem('v_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<link rel="stylesheet" href="style.css?v=10.0">
+    <link rel="stylesheet" href="theme.css?v=10.0">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="ledger">
+    <header class="app-header">
+        <div class="header-left">
+            <img src="logo.png" alt="Vedritam Logo" onerror="this.style.display='none'">
+            <div class="header-title">Vedritam School Stock Ledger</div>
+        </div>
+        <div class="header-right">
+            <button class="logout-btn" onclick="vSignOut()">Logout</button>
+        </div>
+    </header>
+
+    <main class="ledger-container">
+        <div class="ledger-header">
+            <div>
+                <div class="breadcrumbs" style="display:flex; align-items:center;">
+                    <a href="dashboard.html">Dashboard</a> <span style="margin: 0 0.5rem;">/</span> 
+                    <a href="schools.html">Schools</a> <span style="margin: 0 0.5rem;">/</span> 
+                    <strong id="lblSchoolName">Loading...</strong> <span style="margin: 0 0.5rem;">/</span> 
+                    <strong id="lblClassName">...</strong>
+
+                    <span id="lblClassStrength" style="margin-left: 15px; padding: 3px 8px; background: rgba(15, 58, 97, 0.1); color: var(--primary-color); border-radius: 4px; font-weight: 500;">
+                        Strength: ...
+                    </span>
+                </div>
+                <h2 style="margin: 0;">Stock Ledger</h2>
+            </div>
+            
+            <div class="toolbar">
+                <button class="btn btn-danger" id="btnDeleteRow" onclick="App.ledger.deleteSelected()">Delete</button>
+                <div class="filter-group">
+                    <label for="standardSelect">Standard</label>
+                    <select id="standardSelect" class="form-control" style="min-width:170px">
+                        <option value="ALL">All Standards</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="categorySelect">Category</label>
+                    <select id="categorySelect" class="form-control" style="min-width:150px">
+                        <option value="ALL">All Categories</option>
+                    </select>
+                </div>
+                <input type="text" id="ledgerSearch" class="form-control" placeholder="Fast search..." style="width: 200px;">
+                <div class="filter-group">
+                    <label for="bookSelect">Book</label>
+                    <select id="bookSelect" class="form-control" style="min-width:220px"
+                            onchange="App.ledger.pickBook(this.value)">
+                        <option value="">-- add a book --</option>
+                    </select>
+                </div>
+                <button class="btn btn-secondary" onclick="App.ledger.openCatalog()">+ Add from Catalog</button>
+                <button class="btn btn-secondary" onclick="App.ledger.addRecord()">+ Blank Row</button>
+                <button class="btn btn-secondary" onclick="App.ledger.fetchData()">&#8635; Refresh</button>
+                <button class="btn btn-secondary" onclick="App.ledger.downloadCSV()">&#8595; Download</button>
+                <button class="btn btn-secondary" id="btnFullScreen" onclick="App.ledger.toggleFullScreen()" title="Show the ledger and its buttons full screen">&#9974; Full Screen</button>
+                <button class="btn btn-primary" id="btnSaveLedger" onclick="App.ledger.saveChanges()">Save Changes (0)</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper register-scroll">
+            <table class="spreadsheet register-table" id="ledgerTable">
+                <thead id="ledgerHead">
+                    <!-- 22-column register header built by JS -->
+                </thead>
+                <tbody id="ledgerBody">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+    <!-- Catalog picker: master book / notebook list for the selected standard -->
+    <div class="modal-overlay" id="catalogModal">
+        <div class="modal-box catalog-box">
+            <div class="modal-head">
+                <h3 id="catalogTitle">Catalog</h3>
+                <button class="btn btn-secondary btn-sm" onclick="App.ledger.closeCatalog()">Close</button>
+            </div>
+            <div class="catalog-filters">
+                <input type="text" id="catalogSearch" class="form-control" placeholder="Search title, subject, publication..."
+                       oninput="App.ledger.renderCatalog()">
+                <select id="catalogCategory" class="form-control" onchange="App.ledger.renderCatalog()">
+                    <option value="ALL">All Categories</option>
+                    <option value="TB">Text Books</option>
+                    <option value="NB">Note Books</option>
+                    <option value="STATIONERY">Stationery</option>
+                    <option value="INHOUSE">Inhouse</option>
+                </select>
+            </div>
+            <div class="catalog-list" id="catalogList"></div>
+            <div class="modal-foot">
+                <button class="btn btn-primary" onclick="App.ledger.addSelectedFromCatalog()">Add Selected Rows</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <script src="app.js?v=10.0"></script>
+<script src="shell.js?v=10.0"></script>
+</body>
+</html>

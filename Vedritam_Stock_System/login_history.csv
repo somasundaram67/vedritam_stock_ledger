@@ -1,0 +1,70 @@
+id,username,timestamp,result,ip,user_agent,detail
+ab79206b069e,admin,2026-08-03 14:43:19,SUCCESS,testclient,testclient,role=super_admin
+68a2fefac13e,teacher1,2026-08-03 14:43:19,SUCCESS,testclient,testclient,role=staff
+7838b6324187,admin,2026-08-03 14:43:19,2FA_ENABLED,,,
+f760cc17dc0a,admin,2026-08-03 14:43:19,2FA_REQUIRED,testclient,testclient,
+3fb42f355500,admin,2026-08-03 14:43:19,SUCCESS,testclient,testclient,role=super_admin
+6c3afecd1016,teacher1,2026-08-03 14:43:19,FAILED,testclient,testclient,Wrong password
+ed9284fcd798,teacher1,2026-08-03 14:43:19,FAILED,testclient,testclient,Wrong password
+f5c9b7e87251,teacher1,2026-08-03 14:43:19,FAILED,testclient,testclient,Wrong password
+c92288bfa498,teacher1,2026-08-03 14:43:19,FAILED,testclient,testclient,Wrong password
+def3729473f5,teacher1,2026-08-03 14:43:19,FAILED,testclient,testclient,Wrong password
+0384201683f3,teacher1,2026-08-03 14:43:19,LOCKED,testclient,testclient,Too many failed attempts
+7d523d250368,teacher1,2026-08-03 14:43:19,LOCKED,testclient,testclient,Too many failed attempts
+e87a94260847,superadmin,2026-08-03 14:48:36,FAILED,testclient,testclient,Unknown account
+57937d188957,superadmin,2026-08-03 14:48:41,FAILED,testclient,testclient,Unknown account
+116d7fee4fd9,admin,2026-08-03 14:48:52,SUCCESS,testclient,testclient,role=super_admin
+245159a6d6fe,admin,2026-08-03 14:49:12,SUCCESS,testclient,testclient,role=super_admin
+b8bde25ce9da,admin,2026-08-03 14:49:12,2FA_ENABLED,,,
+36fdb5dc14cd,admin,2026-08-03 14:49:12,2FA_REQUIRED,testclient,testclient,
+1f34a6246909,admin,2026-08-03 14:49:12,SUCCESS,testclient,testclient,role=super_admin
+d4c3bf933af6,admin,2026-08-03 14:49:45,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+66a166d43ad3,qaadmin,2026-08-04 17:50:47,SUCCESS,127.0.0.1,curl/8.18.0,role=super_admin
+f3d79f6d2aa6,qastaff,2026-08-04 17:50:47,SUCCESS,127.0.0.1,curl/8.18.0,role=staff
+668dee04ac40,qauser,2026-08-04 17:50:47,SUCCESS,127.0.0.1,curl/8.18.0,role=user
+c1ecdfffeeff,qaadmin,2026-08-04 17:52:24,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+7f78c5cad965,qaadmin,2026-08-04 17:53:21,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+711d3e5897e4,qaadmin,2026-08-04 17:53:42,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+aabab10e174a,qaadmin,2026-08-04 17:53:59,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+f5827ab59fea,qaadmin,2026-08-04 17:54:26,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+6cf4e3847815,qauser,2026-08-04 17:55:52,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=user
+f06c722a5a80,qauser,2026-08-04 17:56:33,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=user
+89a7b540b904,admin,2026-08-04 18:50:07,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+a6b2a25c4cf6,admin,2026-08-04 18:50:26,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+2d0ee0cfbcc2,admin,2026-08-04 18:51:31,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+c4ca9cd62a60,admin,2026-08-04 18:51:40,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+58c52ee1a6b4,admin,2026-08-04 18:52:12,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+e7067e99a832,admin,2026-08-04 18:53:16,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+ffd59d08048d,admin,2026-08-05 01:10:51,FAILED,127.0.0.1,curl/8.18.0,Wrong password
+85dee4d605f7,admin,2026-08-05 01:11:17,SUCCESS,127.0.0.1,curl/8.18.0,role=super_admin
+612f84aa8c73,admin,2026-08-05 01:11:33,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+bdaf424a58dd,admin,2026-08-05 01:12:06,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+b61b16c16cbd,admin,2026-08-05 01:12:45,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+3998cb4d5cfe,teacher1,2026-08-05 01:12:57,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=staff
+e80a38a253a2,admin,2026-08-05 01:13:41,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+d483c90b2b46,admin,2026-08-05 01:13:46,LOGOUT,,,
+1e4ef2714784,admin,2026-08-05 01:15:08,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+13423c5d1198,admin,2026-08-05 01:15:10,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+4011cff92ce1,admin,2026-08-05 01:15:23,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+eee51ff544bf,admin,2026-08-05 01:15:33,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+cd256f55e21b,admin,2026-08-05 01:15:40,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+ca406190a05f,admin,2026-08-05 01:15:47,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+f347687fccc6,admin,2026-08-05 01:15:54,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+1efd8c22bb48,admin,2026-08-05 01:16:03,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+4084c1653e3e,admin,2026-08-05 01:16:10,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+8f758afe89cd,admin,2026-08-05 01:16:22,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+7bd23e7eeb5a,admin,2026-08-05 01:16:33,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+dcc33803ec33,admin,2026-08-05 01:16:41,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+3357429eee29,teacher1,2026-08-05 01:19:15,FAILED,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",Unknown account
+b0bc8ab6daf1,teacher1,2026-08-05 01:20:20,FAILED,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",Unknown account
+bae79cb3b67a,teacher1,2026-08-05 01:20:30,FAILED,127.0.0.1,curl/8.18.0,Unknown account
+abb5ea9a0583,teacher1,2026-08-05 01:20:49,FAILED,127.0.0.1,curl/8.18.0,Wrong password
+addb9310d9f2,teacher1,2026-08-05 01:20:56,FAILED,127.0.0.1,curl/8.18.0,Wrong password
+6149ed8e20cc,teacher1,2026-08-05 01:21:28,SUCCESS,127.0.0.1,curl/8.18.0,role=staff
+1164a4d38a19,teststaff,2026-08-05 01:21:28,SUCCESS,127.0.0.1,curl/8.18.0,role=user
+ec246c7933cf,admin,2026-08-05 01:21:28,SUCCESS,127.0.0.1,curl/8.18.0,role=super_admin
+67a57952761d,teacher1,2026-08-05 01:22:59,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=staff
+3122c0d41ed5,admin,2026-08-05 01:45:37,SUCCESS,127.0.0.1,curl/8.18.0,role=super_admin
+e2294bdf909a,admin,2026-08-05 01:45:53,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+52e3bd0f68cb,admin,2026-08-05 01:46:45,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
+f84c6707ec10,admin,2026-08-05 01:54:34,SUCCESS,127.0.0.1,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",role=super_admin
