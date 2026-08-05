@@ -1,9 +1,0 @@
-id,name,code,location,classes_json
-1,Delhi Public School,DPS-01,North Zone,"[{""id"": 103, ""name"": ""7-g"", ""strength"": 45}, {""id"": 104, ""name"": ""7-a"", ""strength"": 43}, {""id"": 105, ""name"": ""12-a"", ""strength"": 43}]"
-3,kakarot grp of school,676767,dwaraka,"[{""id"": 1, ""name"": ""4-z"", ""strength"": 34}, {""id"": 2, ""name"": ""5-r"", ""strength"": 32}, {""id"": 3, ""name"": ""12-i"", ""strength"": 54}]"
-4,DAV BMPM,12443,chennai,"[{""id"": 110, ""name"": ""6-g"", ""strength"": 45}, {""id"": 204, ""name"": ""7-a"", ""strength"": 43}, {""id"": 205, ""name"": ""11-y"", ""strength"": 43}]"
-5,DAV GMPM,12443,chennai,"[{""id"": 106, ""name"": ""6-g"", ""strength"": 45}, {""id"": 304, ""name"": ""8-b"", ""strength"": 49}, {""id"": 210, ""name"": ""12-m"", ""strength"": 43}]"
-6,DAV BPPM,12443,chennai,"[{""id"": 107, ""name"": ""2-g"", ""strength"": 45}, {""id"": 404, ""name"": ""9-a"", ""strength"": 47}, {""id"": 235, ""name"": ""2-a"", ""strength"": 43}]"
-7,DAV GPPM,12443,chennai,"[{""id"": 108, ""name"": ""4-g"", ""strength"": 45}, {""id"": 504, ""name"": ""11-a"", ""strength"": 63}, {""id"": 405, ""name"": ""8-a"", ""strength"": 43}]"
-8,DAV BGPM,12443,chennai,"[{""id"": 109, ""name"": ""6-g"", ""strength"": 45}, {""id"": 604, ""name"": ""12-a"", ""strength"": 43}, {""id"": 705, ""name"": ""12-a"", ""strength"": 43}]"
-9,DAV GGPM,12443,chennai,"[{""id"": 100, ""name"": ""8-g"", ""strength"": 45}, {""id"": 704, ""name"": ""6-a"", ""strength"": 23}, {""id"": 185, ""name"": ""12-a"", ""strength"": 43}]"

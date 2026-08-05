@@ -1,3 +1,0 @@
-username,password_hash,role,fullName,email,school_id,lastLogin,status,created_time,created_by
-admin,d36c1681bdf81ac2829a782c3c793bb2$33cf7f10b45654c7d7cf02d94a93bc8efaca3b6cf882d7560c5fad312fc0a2e5,admin,admin,,,2026-07-30 07:05:06,Active,2026-07-29 02:38:35,system
-teststaff,164dd1d3008b2352abdd2a42ad48f87e$f3df369ecad69d509b34622f1c28dbb71d28a7aee11093ed67272299e81410d6,school,Test Staff,,,,Active,2026-07-30 01:01:22,admin
