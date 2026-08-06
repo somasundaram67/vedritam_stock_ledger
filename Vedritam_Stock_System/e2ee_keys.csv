@@ -1,0 +1,3 @@
+username,public_jwk,updated_at
+teacher1,"{""crv"":""P-256"",""ext"":true,""key_ops"":[],""kty"":""EC"",""x"":""SUDsowVGBTmxSaqNnhMPcPdld0VofHzCGXeCIuM8YaI"",""y"":""j0y9HPyD0Q3yRaIqCaWlr0pmgeJF-hehsA1GzC28Tzg""}",2026-08-05 01:13:11
+admin,"{""crv"":""P-256"",""ext"":true,""key_ops"":[],""kty"":""EC"",""x"":""5u2nTX65ORXHXEVhnS33ND_Xb-244HysiFSl1Pr0Y-E"",""y"":""JHaGH9KY8791Tcx0Mf1mdYNaaVIl2exOlYME4_5XyLs""}",2026-08-06 14:07:35

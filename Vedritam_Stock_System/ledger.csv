@@ -1,0 +1,7 @@
+id,school_id,class_id,standard,vendorId,vendor,vendorContact,vendorGst,invoiceDate,invoiceRef,bookName,category,subject,publication,edition,openingBalance,purchased,approvedRate,baseRate,gstAmount,discountPercent,discountAmount,totalAmount,distributed,returned,closingBalance,strength,booksRequired,balance,remarks,created_by,created_time,modified_by,modified_time
+L_951110bb,2,1,VI,,Vendor A,,,,INV-21,Social Studies,Textbook,SST,NCERT,,0,80,0,0,0,0,0,0,70,1,9,80,0,9,,admin,2026-08-03 11:39:23,teacher1,2026-08-05 01:23:16
+L_e30cf046,2,1,VI,,Vendor A,,,,INV-20,Hindi Vyakaran,Textbook,Hindi,Rajpal,,0,80,0,0,0,0,0,0,50,3,27,80,0,27,,admin,2026-08-03 11:39:23,admin,2026-08-03 11:39:23
+L_966ac035,1,1,V,,Vendor A,,,,INV-12,Science Explorer,Textbook,Science,NCERT,,0,90,0,0,0,0,0,0,20,0,70,90,0,70,,admin,2026-08-03 11:39:23,qa,2026-08-04 17:56:52
+L_9355ef68,1,1,V,,Vendor A,,,,INV-11,English Reader,Textbook,English,Oxford,,0,90,0,0,0,0,0,0,80,2,8,90,0,8,,admin,2026-08-03 11:39:23,admin,2026-08-03 11:39:23
+L_ed10ed62,1,1,V,,Vendor A,,,,INV-10,Mathematics Grade 5,Textbook,Maths,NCERT,,0,90,0,0,0,0,0,0,60,5,25,90,0,25,,admin,2026-08-03 11:39:23,admin,2026-08-03 11:39:23
+L_f83ce688,1,1,V,,,,,,,English Reader,,,,,0,100,0,0,0,0,0,0,0,0,100,90,0,100,,admin,2026-07-30 00:59:15,admin,2026-07-30 00:59:22

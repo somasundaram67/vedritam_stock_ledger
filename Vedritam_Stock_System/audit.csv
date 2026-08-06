@@ -1,0 +1,159 @@
+id,timestamp,username,role,action,entity,entity_id,details
+A_d7d7069601,2026-07-30 00:57:12,admin,admin,LOGIN,auth,admin,Signed in
+A_3cb0741224,2026-07-30 00:58:12,admin,admin,LOGIN,auth,admin,Signed in
+A_5459626fe0,2026-07-30 00:58:16,admin,admin,SCHOOL_CREATE,school,1,Added 'DAV BGPM'
+A_1a3d2098ad,2026-07-30 00:58:19,admin,admin,CLASS_CREATE,class,1:1,Added class 'Class 5-A' (strength 90)
+A_3ac70b885b,2026-07-30 00:58:25,admin,admin,LEDGER_SYNC,ledger,1:1,added 'New MathematicsBook'
+A_a891e9908b,2026-07-30 00:58:28,admin,admin,LEDGER_SYNC,ledger,1:1,deleted 'New MathematicsBook'
+A_a9b0e22163,2026-07-30 00:59:05,admin,admin,LOGIN,auth,admin,Signed in
+A_fbd5ac0f63,2026-07-30 00:59:15,admin,admin,LEDGER_SYNC,ledger,1:1,added 'English Reader'
+A_e1af79d0f2,2026-07-30 00:59:20,admin,admin,DISTRIBUTION_ISSUE,distribution,1:1:L_f83ce688,Issued 5 of 'English Reader' to Mrs. Sharma
+A_c6564c1ec1,2026-07-30 00:59:22,admin,admin,DISTRIBUTION_DELETE,distribution,D_c873afde,Reversed 5 of 'English Reader'
+A_6764e01142,2026-07-30 01:00:03,admin,admin,LOGIN,auth,admin,Signed in
+A_7ec20d8e94,2026-07-30 01:00:08,admin,admin,SCHOOL_CREATE,school,2,Added 'DAV BGPM Senior Wing'
+A_f2d26f179f,2026-07-30 01:00:12,admin,admin,TRANSFER_REQUEST,transfer,T_55270f81,3 of 'English Reader' from S1 -> S2
+A_58c1559eea,2026-07-30 01:00:13,admin,admin,TRANSFER_APPROVED,transfer,T_55270f81,Transfer marked Approved
+A_f8c139a877,2026-07-30 01:00:15,admin,admin,TRANSFER_COMPLETED,transfer,T_55270f81,Transfer marked Completed
+A_33f167d01b,2026-07-30 01:01:03,admin,admin,LOGIN,auth,admin,Signed in
+A_2845bdf5cf,2026-07-30 01:01:07,admin,admin,LIBRARY_SCHOOL_ADD,library_school,1,Added library school 'Library School A'
+A_86a0b0de6b,2026-07-30 01:01:08,admin,admin,LIBRARY_BOOK_ADD,catalog,B_b63fcf8b,Added 'Wings of Fire' x3
+A_b6a079fb5b,2026-07-30 01:01:12,admin,admin,LIBRARY_MEMBER_ADD,member,M_1d0f9de4,"Registered Riya (UID U1, 8-B)"
+A_55b998c526,2026-07-30 01:01:16,admin,admin,LIBRARY_LOAN_ISSUE,loan,LN_47248673,Loan due 2026-08-15
+A_539ba0c926,2026-07-30 01:01:18,admin,admin,LIBRARY_LOAN_RETURN,loan,LN_47248673,Book returned
+A_1ada9ae1f8,2026-07-30 01:01:22,admin,admin,USER_CREATE,user,teststaff,Created school account (status Active)
+A_a4256db8e7,2026-07-30 01:01:32,admin,admin,LEDGER_EXPORT,ledger,1:1,Downloaded CSV for Class_5-A
+A_aa0f7dc231,2026-07-30 01:01:59,admin,admin,LOGIN,auth,admin,Signed in
+A_bb1a9dfb90,2026-07-30 01:02:58,admin,admin,LOGIN,auth,admin,Signed in
+A_8e7e417859,2026-07-30 01:05:37,admin,admin,LOGIN,auth,admin,Signed in
+A_5f355f87de,2026-07-30 01:05:46,admin,admin,TRANSFER_REQUEST,transfer,T_0c727855,3 of 'English Reader' from S1 -> S2
+A_fe4b3810b4,2026-07-30 01:05:48,admin,admin,TRANSFER_APPROVED,transfer,T_0c727855,Transfer marked Approved
+A_1b3a448a0b,2026-07-30 01:05:50,admin,admin,TRANSFER_COMPLETED,transfer,T_0c727855,Transfer marked Completed
+A_8c79d6dbb1,2026-08-03 07:32:23,admin,admin,LOGIN,auth,admin,Signed in
+A_9bad977eb9,2026-08-03 07:32:35,admin,admin,LOGIN,auth,admin,Signed in
+A_776069ab23,2026-08-03 11:16:44,admin,admin,LOGIN,auth,admin,Signed in
+A_8925bf21ee,2026-08-03 11:16:44,admin,super_admin,SCHOOL_CREATE,school,3,Added 'Smoke School'
+A_3c8de9b8c9,2026-08-03 11:16:44,admin,super_admin,SCHOOL_UPDATE,school,3,Updated 'Smoke School'
+A_fdd05a2c74,2026-08-03 11:16:44,admin,super_admin,SCHOOL_DELETE,school,3,School removed
+A_c7a0d8fa4c,2026-08-03 11:39:06,admin,super_admin,LOGIN,auth,admin,Signed in
+A_7b08edfc18,2026-08-03 11:39:36,admin,super_admin,LOGIN,auth,admin,Signed in
+A_1911cb6cb8,2026-08-03 11:42:04,admin,super_admin,LOGIN,auth,admin,Signed in
+A_0892625a3d,2026-08-03 11:43:32,admin,super_admin,LOGIN,auth,admin,Signed in
+A_516e807929,2026-08-03 11:43:44,admin,super_admin,LOGIN,auth,admin,Signed in
+A_ba7cf64b15,2026-08-03 11:47:39,admin,super_admin,LOGIN,auth,admin,Signed in
+A_bc5fb91f2b,2026-08-03 14:43:19,admin,super_admin,LOGIN,auth,admin,Signed in
+A_a1a18904c0,2026-08-03 14:43:19,admin,super_admin,USER_CREATE,user,teacher1,Created staff account (status Active)
+A_18f2ea9196,2026-08-03 14:43:19,admin,super_admin,CONVERSATION_CREATE,conversation,05c093e1c455,dm: admin & teacher1
+A_155a93217c,2026-08-03 14:43:19,admin,super_admin,ANNOUNCEMENT,conversation,cc48340201a4,Holiday
+A_6093b5d95e,2026-08-03 14:43:19,teacher1,staff,LOGIN,auth,teacher1,Signed in
+A_4a12de1857,2026-08-03 14:43:19,admin,super_admin,2FA_ENROLL_START,auth,admin,Started two-factor enrolment
+A_a583f73591,2026-08-03 14:43:19,admin,super_admin,2FA_ENABLED,auth,admin,Two-factor authentication enabled
+A_8c7117abdd,2026-08-03 14:43:19,admin,super_admin,LOGIN,auth,admin,Signed in
+A_79e9bb7800,2026-08-03 14:43:19,admin,super_admin,2FA_DISABLED,auth,admin,Two-factor authentication disabled
+A_69aeb165fe,2026-08-03 14:43:19,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_28ade31404,2026-08-03 14:43:19,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_728806255e,2026-08-03 14:43:19,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_da9b305049,2026-08-03 14:43:19,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_e797e63bef,2026-08-03 14:43:19,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_e84a7e21ae,2026-08-03 14:48:52,admin,super_admin,LOGIN,auth,admin,Signed in
+A_3f983ed4f0,2026-08-03 14:48:52,admin,super_admin,ANNOUNCEMENT,conversation,7fb8543109bc,Maintenance
+A_4b7df662f1,2026-08-03 14:48:52,admin,super_admin,2FA_ENROLL_START,auth,admin,Started two-factor enrolment
+A_223b4c1833,2026-08-03 14:49:12,admin,super_admin,LOGIN,auth,admin,Signed in
+A_141f6299b2,2026-08-03 14:49:12,admin,super_admin,CONVERSATION_CREATE,conversation,b109914a3ced,dm: Ops chat
+A_bf2d0273b6,2026-08-03 14:49:12,admin,super_admin,ANNOUNCEMENT,conversation,31413213e821,Maintenance
+A_6ea20dee67,2026-08-03 14:49:12,admin,super_admin,2FA_ENROLL_START,auth,admin,Started two-factor enrolment
+A_c8b02abe9d,2026-08-03 14:49:12,admin,super_admin,2FA_ENABLED,auth,admin,Two-factor authentication enabled
+A_59cd9af273,2026-08-03 14:49:12,admin,super_admin,LOGIN,auth,admin,Signed in
+A_3cb8a5ed4b,2026-08-03 14:49:12,admin,super_admin,2FA_DISABLED,auth,admin,Two-factor authentication disabled
+A_5fee587009,2026-08-03 14:49:45,admin,super_admin,LOGIN,auth,admin,Signed in
+A_ca565fb72b,2026-08-04 17:50:47,qaadmin,super_admin,LOGIN,auth,qaadmin,Signed in
+A_77fe7f840b,2026-08-04 17:50:47,qastaff,staff,LOGIN,auth,qastaff,Signed in
+A_2681016fd8,2026-08-04 17:50:47,qauser,user,LOGIN,auth,qauser,Signed in
+A_e0f86e142f,2026-08-04 17:52:24,qaadmin,super_admin,LOGIN,auth,qaadmin,Signed in
+A_a6c13f970d,2026-08-04 17:53:21,qaadmin,super_admin,LOGIN,auth,qaadmin,Signed in
+A_913a02a392,2026-08-04 17:53:42,qaadmin,super_admin,LOGIN,auth,qaadmin,Signed in
+A_1b85793efb,2026-08-04 17:53:59,qaadmin,super_admin,LOGIN,auth,qaadmin,Signed in
+A_df17cb954f,2026-08-04 17:54:02,qaadmin,super_admin,DISTRIBUTION_ISSUE,distribution,1:1:L_966ac035,Issued 2 of 'Science Explorer' to QA Teacher
+A_c1d572dbb1,2026-08-04 17:54:26,qaadmin,super_admin,LOGIN,auth,qaadmin,Signed in
+A_4007ffc81f,2026-08-04 17:54:29,qaadmin,super_admin,DISTRIBUTION_ISSUE,distribution,1:1:L_966ac035,Issued 2 of 'Science Explorer' to QA Teacher
+A_78dad965be,2026-08-04 17:54:31,qaadmin,super_admin,DISTRIBUTION_DELETE,distribution,D_ee61f6c0,Reversed 2 of 'Science Explorer'
+A_ab43374278,2026-08-04 17:55:52,qauser,user,LOGIN,auth,qauser,Signed in
+A_8817558b0c,2026-08-04 17:56:33,qauser,user,LOGIN,auth,qauser,Signed in
+A_e70506160b,2026-08-04 18:50:07,admin,super_admin,LOGIN,auth,admin,Signed in
+A_31a889e37a,2026-08-04 18:50:26,admin,super_admin,LOGIN,auth,admin,Signed in
+A_8b5fd0cfdc,2026-08-04 18:51:31,admin,super_admin,LOGIN,auth,admin,Signed in
+A_94957a3cd1,2026-08-04 18:51:40,admin,super_admin,LOGIN,auth,admin,Signed in
+A_6833d47849,2026-08-04 18:52:12,admin,super_admin,LOGIN,auth,admin,Signed in
+A_1ac78ad665,2026-08-04 18:53:16,admin,super_admin,LOGIN,auth,admin,Signed in
+A_096e50d9a7,2026-08-05 01:10:51,admin,super_admin,LOGIN_FAILED,auth,admin,Wrong password
+A_41ccd24c07,2026-08-05 01:11:17,admin,super_admin,LOGIN,auth,admin,Signed in
+A_999c37678f,2026-08-05 01:11:33,admin,super_admin,LOGIN,auth,admin,Signed in
+A_ef7b7587bb,2026-08-05 01:12:06,admin,super_admin,LOGIN,auth,admin,Signed in
+A_dbe219e4f7,2026-08-05 01:12:10,admin,super_admin,TRANSFER_REQUEST,transfer,T_17a81ae5,3 of 'QA Book' from S1 -> S2
+A_f0ee975438,2026-08-05 01:12:12,admin,super_admin,TRANSFER_APPROVED,transfer,T_17a81ae5,Transfer marked Approved
+A_bb4bfc03c0,2026-08-05 01:12:45,admin,super_admin,LOGIN,auth,admin,Signed in
+A_ca12888de1,2026-08-05 01:12:51,admin,super_admin,DISTRIBUTION_ISSUE,distribution,2:1:L_951110bb,Issued 2 of 'Social Studies' to QA Class 6-A
+A_9032fdbd9e,2026-08-05 01:12:55,admin,super_admin,DISTRIBUTION_DELETE,distribution,D_2a7068eb,Reversed 2 of 'Social Studies'
+A_e7a7eaaa44,2026-08-05 01:12:57,teacher1,staff,LOGIN,auth,teacher1,Signed in
+A_eb27f3fc50,2026-08-05 01:13:41,admin,super_admin,LOGIN,auth,admin,Signed in
+A_f1bef4ab65,2026-08-05 01:13:46,admin,super_admin,LOGOUT,auth,admin,Signed out
+A_fcbba297fc,2026-08-05 01:15:08,admin,super_admin,LOGIN,auth,admin,Signed in
+A_0d9edb19dd,2026-08-05 01:15:10,admin,super_admin,LOGIN,auth,admin,Signed in
+A_bfa1584a56,2026-08-05 01:15:23,admin,super_admin,LOGIN,auth,admin,Signed in
+A_0ab3ed51bc,2026-08-05 01:15:33,admin,super_admin,LOGIN,auth,admin,Signed in
+A_967ce64328,2026-08-05 01:15:40,admin,super_admin,LOGIN,auth,admin,Signed in
+A_2d42796d8c,2026-08-05 01:15:46,admin,super_admin,TRANSFER_COMPLETED,transfer,T_17a81ae5,Transfer marked Completed
+A_31c9823e63,2026-08-05 01:15:47,admin,super_admin,LOGIN,auth,admin,Signed in
+A_922ce4d4fe,2026-08-05 01:15:54,admin,super_admin,LOGIN,auth,admin,Signed in
+A_2b3c2eeaa2,2026-08-05 01:16:03,admin,super_admin,LOGIN,auth,admin,Signed in
+A_a99c31a2f8,2026-08-05 01:16:10,admin,super_admin,LOGIN,auth,admin,Signed in
+A_b2afc72546,2026-08-05 01:16:17,admin,super_admin,USER_UPDATE,user,teststaff,status=Disabled
+A_19f2887af7,2026-08-05 01:16:18,admin,super_admin,USER_UPDATE,user,teacher1,status=Disabled
+A_2fb9860406,2026-08-05 01:16:20,admin,super_admin,USER_UPDATE,user,teacher1,"role=user, status=Active, fullName=, email=, school_id="
+A_c5ebabf244,2026-08-05 01:16:21,admin,super_admin,USER_DELETE,user,teacher1,Account removed
+A_ceddf74bf8,2026-08-05 01:16:22,admin,super_admin,LOGIN,auth,admin,Signed in
+A_7db86ef611,2026-08-05 01:16:33,admin,super_admin,LOGIN,auth,admin,Signed in
+A_585f0e3836,2026-08-05 01:16:38,admin,super_admin,SESSION_TIMEOUT_UPDATE,security,admin,Idle timeout set to 30 minutes
+A_b57fe60b5d,2026-08-05 01:16:38,admin,super_admin,2FA_ENROLL_START,auth,admin,Started two-factor enrolment
+A_390c06ec9f,2026-08-05 01:16:41,admin,super_admin,LOGIN,auth,admin,Signed in
+A_afa655af8f,2026-08-05 01:16:47,admin,super_admin,AI_SETTINGS_UPDATE,settings,ai,Model gpt-4o-mini @ https://api.openai.com/v1
+A_96194e130e,2026-08-05 01:16:47,admin,super_admin,AI_SETTINGS_CLEAR,settings,ai,Key removed
+A_d2b4ff158a,2026-08-05 01:20:49,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_97ed4c3d36,2026-08-05 01:20:56,teacher1,staff,LOGIN_FAILED,auth,teacher1,Wrong password
+A_3e2043fc64,2026-08-05 01:21:28,teacher1,staff,LOGIN,auth,teacher1,Signed in
+A_af789de9fe,2026-08-05 01:21:28,teststaff,user,LOGIN,auth,teststaff,Signed in
+A_f419eda83b,2026-08-05 01:21:28,admin,super_admin,LOGIN,auth,admin,Signed in
+A_cd2cbaeb1e,2026-08-05 01:22:59,teacher1,staff,LOGIN,auth,teacher1,Signed in
+A_d95fd51dfa,2026-08-05 01:23:03,teacher1,staff,TRANSFER_REQUEST,transfer,T_1c936d28,4 of 'QA Staff Book' from S1 -> S2
+A_ca5404be30,2026-08-05 01:23:05,teacher1,staff,TRANSFER_REJECTED,transfer,T_1c936d28,Transfer marked Rejected: Not enough stock
+A_3ed22bfe35,2026-08-05 01:23:11,teacher1,staff,DISTRIBUTION_ISSUE,distribution,2:1:L_951110bb,Issued 1 of 'Social Studies' to Staff QA
+A_7ccedfafc6,2026-08-05 01:23:16,teacher1,staff,DISTRIBUTION_DELETE,distribution,D_ecb011b2,Reversed 1 of 'Social Studies'
+A_511e288bee,2026-08-05 01:45:37,admin,super_admin,LOGIN,auth,admin,Signed in
+A_652cf76f3d,2026-08-05 01:45:53,admin,super_admin,LOGIN,auth,admin,Signed in
+A_cbf3231375,2026-08-05 01:46:45,admin,super_admin,LOGIN,auth,admin,Signed in
+A_c70a349b07,2026-08-05 01:51:08,admin,super_admin,USER_UPDATE,user,teststaff,status=Disabled
+A_5e01231ed0,2026-08-05 01:51:16,admin,super_admin,USER_UPDATE,user,teacher1,status=Disabled
+A_37d8577045,2026-08-05 01:53:00,admin,super_admin,SESSION_TIMEOUT_UPDATE,security,admin,Idle timeout set to 30 minutes
+A_a45c29e9cf,2026-08-05 01:53:03,admin,super_admin,2FA_ENROLL_START,auth,admin,Started two-factor enrolment
+A_9ae54cce87,2026-08-05 01:53:44,admin,super_admin,AI_SETTINGS_UPDATE,settings,ai,Model gpt-4o-mini @ https://api.openai.com/v1
+A_e80567d732,2026-08-05 01:53:47,admin,super_admin,AI_SETTINGS_CLEAR,settings,ai,Key removed
+A_cbfa867cfc,2026-08-05 01:54:34,admin,super_admin,LOGIN,auth,admin,Signed in
+A_df28cb321a,2026-08-05 01:58:58,admin,super_admin,USER_UPDATE,user,teststaff,status=Active
+A_a67a31d09e,2026-08-05 01:59:07,admin,super_admin,USER_UPDATE,user,teacher1,status=Active
+A_3d66f4ddb9,2026-08-05 02:00:49,admin,super_admin,SESSION_TIMEOUT_UPDATE,security,admin,Idle timeout set to 30 minutes
+A_70f9e7eb08,2026-08-05 02:00:52,admin,super_admin,2FA_ENROLL_START,auth,admin,Started two-factor enrolment
+A_ffa9885eaf,2026-08-05 02:01:34,admin,super_admin,AI_SETTINGS_UPDATE,settings,ai,Model gpt-4o-mini @ https://api.openai.com/v1
+A_54130c2d6c,2026-08-05 02:01:36,admin,super_admin,AI_SETTINGS_CLEAR,settings,ai,Key removed
+A_0c5d6354b9,2026-08-05 21:32:58,admin,super_admin,LOGIN,auth,admin,Signed in
+A_4793fef0ea,2026-08-06 12:06:22,admin,super_admin,LOGIN,auth,admin,Signed in
+A_dfd39f6acd,2026-08-06 12:17:34,admin,super_admin,LOGIN,auth,admin,Signed in
+A_7134013d4c,2026-08-06 12:19:23,admin,super_admin,LOGIN,auth,admin,Signed in
+A_e15ebdacbc,2026-08-06 12:25:22,admin,super_admin,LOGIN,auth,admin,Signed in
+A_014cefc77c,2026-08-06 12:28:21,admin,super_admin,LOGIN,auth,admin,Signed in
+A_761a6cd350,2026-08-06 12:31:07,admin,super_admin,LOGIN,auth,admin,Signed in
+A_ae56e9771d,2026-08-06 12:36:05,admin,super_admin,LOGIN,auth,admin,Signed in
+A_80614ffa23,2026-08-06 12:38:53,admin,super_admin,LOGIN,auth,admin,Signed in
+A_35e26ba45b,2026-08-06 12:55:32,admin,super_admin,LOGIN,auth,admin,Signed in
+A_16770c903a,2026-08-06 13:03:54,admin,super_admin,LOGIN,auth,admin,Signed in
+A_ab59599ac6,2026-08-06 13:43:09,admin,super_admin,LOGIN,auth,admin,Signed in
+A_33ab682fa7,2026-08-06 14:07:08,admin,super_admin,LOGIN,auth,admin,Signed in
+A_6374110385,2026-08-06 14:08:28,admin,super_admin,LOGOUT,auth,admin,Signed out

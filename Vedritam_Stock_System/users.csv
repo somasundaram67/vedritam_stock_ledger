@@ -1,0 +1,4 @@
+username,password_hash,role,fullName,email,school_id,lastLogin,status,created_time,created_by
+admin,0a71904bb6404435cacbfa9a858047dc$20e510b77245459ff245b5aee75bc631c3a6b40855c32b7ea08cc7ebeaff8738,super_admin,admin,,,2026-08-06 14:07:08,Active,2026-07-29 02:38:35,system
+teststaff,1fdf6ac34fd23f86ca249b0080547f4e$1e2ec518e160bb1748b951d6102ec413b2132a911c1aa041b7cf6b1c4ed0f63f,user,Test Staff,,,2026-08-05 01:21:28,Active,2026-07-30 01:01:22,admin
+teacher1,1fdf6ac34fd23f86ca249b0080547f4e$1e2ec518e160bb1748b951d6102ec413b2132a911c1aa041b7cf6b1c4ed0f63f,staff,T One,,,2026-08-05 01:22:59,Active,2026-08-03 14:43:19,admin
