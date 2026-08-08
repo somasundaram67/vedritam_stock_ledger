@@ -1,0 +1,2 @@
+username,password_hash,role,fullName,email,school_id,lastLogin,status,created_time,created_by
+admin,549a07190d950d5f2c17b493c98ea068$b5ceb97556baba8b7c3e29e843a201e19690409d64a7ddfaa70d3a679b8bee97,super_admin,admin,,,2026-08-08 12:04:18,Active,2026-07-29 02:38:35,system

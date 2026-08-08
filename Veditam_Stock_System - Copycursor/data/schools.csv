@@ -1,0 +1,4 @@
+id,name,code,location,logo,address,contact,academic_year,status,assigned_staff,settings_json,classes_json
+1,DAV BGPM,DAVBGPM,,,,,,,,,"[{""id"": 1, ""name"": ""Class 5-A"", ""strength"": 90}, {""id"": 2, ""name"": ""Class 5"", ""strength"": 48}]"
+2,DAV BGPM Senior Wing,,,,,,,,,,"[{""id"": 1, ""name"": ""Class 6-A"", ""strength"": 80}]"
+3,Vedritam Public School,VPS,Pune,,,,2025-2026,Active,,{},[]

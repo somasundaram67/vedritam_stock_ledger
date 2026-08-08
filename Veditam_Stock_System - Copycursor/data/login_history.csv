@@ -1,0 +1,5 @@
+id,username,timestamp,result,ip,user_agent,detail
+13315f8daccf,admin,2026-08-08 11:50:19,SUCCESS,127.0.0.1,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0,role=super_admin
+1bc169730758,admin,2026-08-08 11:52:58,SUCCESS,127.0.0.1,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0,role=super_admin
+1986cdc0fabd,admin,2026-08-08 11:59:40,SUCCESS,127.0.0.1,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0,role=super_admin
+a8203f532ef1,admin,2026-08-08 12:04:18,SUCCESS,127.0.0.1,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0,role=super_admin
