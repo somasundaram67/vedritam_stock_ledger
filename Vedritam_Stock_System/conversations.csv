@@ -1,4 +1,0 @@
-id,type,title,school_id,members_json,created_by,created_time,last_message_at,last_message
-05c093e1c455,dm,admin & teacher1,,"[""admin"", ""teacher1""]",admin,2026-08-03 14:43:19,2026-08-03 14:43:19,admin: Hello there
-b109914a3ced,dm,Ops chat,,"[""admin"", ""teststaff""]",admin,2026-08-03 14:49:12,2026-08-03 14:49:12,admin: see file
-announcements,announcement,Announcements,,[],admin,2026-08-03 14:43:19,2026-08-03 14:49:12,admin: System update tonight

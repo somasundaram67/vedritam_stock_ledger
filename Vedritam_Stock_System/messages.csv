@@ -1,7 +1,0 @@
-id,conversation_id,sender,body,attachment_id,attachment_name,attachment_type,attachment_size,timestamp,deleted
-5a902dc66cf6,05c093e1c455,admin,Hello there,e838e91b476d4ab99febd7691fd38e12.pdf,note.pdf,application/pdf,13,2026-08-03 14:43:19,0
-20b6a2ebbd32,announcements,admin,School closed Friday,,,,,2026-08-03 14:43:19,0
-53c9ffcce39c,announcements,admin,System update tonight,,,,,2026-08-03 14:48:52,0
-14edbb5503ef,b109914a3ced,admin,hello world test,,,,,2026-08-03 14:49:12,0
-7a64b12abb45,b109914a3ced,admin,see file,b7c99539befd45f3a3d8cae6092fd966.txt,note.txt,text/plain,16,2026-08-03 14:49:12,0
-2de5254bc590,announcements,admin,System update tonight,,,,,2026-08-03 14:49:12,0
